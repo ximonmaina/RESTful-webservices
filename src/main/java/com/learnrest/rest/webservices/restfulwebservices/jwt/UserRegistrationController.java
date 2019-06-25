@@ -65,5 +65,14 @@ public class UserRegistrationController {
         return new ResponseEntity<UserData>(userData, HttpStatus.OK);
     }
 
+    @DeleteMapping("/deleteuser/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable long id) {
+        System.out.println("id is" + id);
+         this.userRepo.deleteById(id);
+
+         return ResponseEntity.noContent().build();
+
+    }
+
 
 }
