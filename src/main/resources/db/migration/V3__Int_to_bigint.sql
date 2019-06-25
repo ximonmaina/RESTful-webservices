@@ -1,0 +1,1 @@
+ALTER TABLE user MODIFY phonenumber bigint(20);
