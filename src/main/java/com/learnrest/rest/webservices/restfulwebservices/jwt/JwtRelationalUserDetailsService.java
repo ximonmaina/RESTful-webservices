@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class JwtRelationalUserDetailsService implements UserDetailsService {
 
-
 	private JwtUserRepository jwtUserRepository;
 
 	@Autowired
@@ -35,7 +34,7 @@ public class JwtRelationalUserDetailsService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		JwtUserDetails user = jwtUserRepository.findByUsername(username);
-
+//		System.out.println("username is: " + username);
 		if (user == null) {
 			throw new UsernameNotFoundException(String.format("USER_NOT_FOUND '%s'.", username));
 		}

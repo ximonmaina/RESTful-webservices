@@ -27,7 +27,7 @@ public class JwtUserDetails implements UserDetails {
 	private  String fullname;
 	private  String city;
 	private  String zip;
-	private  double phonenumber;
+	private  long phonenumber;
 	private  String roles;
 
 	 private JwtUserDetails() {}
@@ -38,7 +38,7 @@ public class JwtUserDetails implements UserDetails {
 
 
 	public JwtUserDetails(final Long id, final String username,final String password,final String fullname,
-						  final String city,final String zip,final double phonenumber,final String roles) {
+						  final String city,final String zip,final long phonenumber,final String roles) {
 		this.id = id;
 		this.username = username;
 		this.password = password;
@@ -75,7 +75,7 @@ public class JwtUserDetails implements UserDetails {
 		this.zip = zip;
 	}
 
-	public void setPhonenumber(double phonenumber) {
+	public void setPhonenumber(long phonenumber) {
 		this.phonenumber = phonenumber;
 	}
 
@@ -99,7 +99,7 @@ public class JwtUserDetails implements UserDetails {
 		return zip;
 	}
 
-	public double getPhonenumber() {
+	public long getPhonenumber() {
 		return phonenumber;
 	}
 
@@ -156,13 +156,15 @@ public class JwtUserDetails implements UserDetails {
 	@Override
 	public String toString() {
 		return "JwtUserDetails{" +
-				"username='" + username + '\'' +
+				"id=" + id +
+				", username='" + username + '\'' +
 				", password='" + password + '\'' +
 				", fullname='" + fullname + '\'' +
 				", city='" + city + '\'' +
 				", zip='" + zip + '\'' +
 				", phonenumber=" + phonenumber +
 				", roles='" + roles + '\'' +
+				", authorities=" + authorities +
 				'}';
 	}
 }
