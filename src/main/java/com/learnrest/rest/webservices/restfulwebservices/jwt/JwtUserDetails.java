@@ -37,8 +37,10 @@ public class JwtUserDetails implements UserDetails {
 
 
 
-	public JwtUserDetails(final Long id, final String username,final String password,final String fullname,
-						  final String city,final String zip,final long phonenumber,final String roles) {
+
+
+	public JwtUserDetails( Long id,  String username, String password, String fullname,
+						   String city, String zip, long phonenumber, String roles) {
 		this.id = id;
 		this.username = username;
 		this.password = password;

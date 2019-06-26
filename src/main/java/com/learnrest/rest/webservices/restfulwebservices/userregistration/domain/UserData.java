@@ -1,4 +1,4 @@
-package com.learnrest.rest.webservices.restfulwebservices.jwt;
+package com.learnrest.rest.webservices.restfulwebservices.userregistration.domain;
 
 import lombok.Data;
 

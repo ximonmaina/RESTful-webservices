@@ -1,5 +1,7 @@
-package com.learnrest.rest.webservices.restfulwebservices.jwt;
+package com.learnrest.rest.webservices.restfulwebservices.userregistration.api;
 
+import com.learnrest.rest.webservices.restfulwebservices.userregistration.domain.UserData;
+import com.learnrest.rest.webservices.restfulwebservices.userregistration.repository.UserDataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +14,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/register")
-@CrossOrigin("http:localhost:8080")
+@CrossOrigin("http://localhost:4200")
 public class UserRegistrationController {
     private UserDataRepository userRepo;
     private PasswordEncoder passwordEncoder;
@@ -25,6 +27,7 @@ public class UserRegistrationController {
         this.userRepo = userRepo;
         this.passwordEncoder = passwordEncoder;
     }
+
 
     @GetMapping("/getusers")
     public Iterable<UserData> getAllUsers() {

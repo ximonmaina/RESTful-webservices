@@ -56,12 +56,27 @@ public class JWTWebSecurityConfig extends WebSecurityConfigurerAdapter {
 		httpSecurity.csrf().disable().exceptionHandling()
 				.authenticationEntryPoint(jwtUnAuthorizedResponseAuthenticationEntryPoint).and().sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests().anyRequest()
-				.authenticated();
+				.authenticated()
+				.and()
+				.authorizeRequests()
+					.antMatchers("/register")
+				.access("hasRole('ADMIN')")
+				.anyRequest();
+
+
 
 		httpSecurity.addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
+//		httpSecurity.authorizeRequests()
+//				.antMatchers("/register")
+//				.access("hasRole('admin')")
+//		.anyRequest();
 
 		httpSecurity.headers().frameOptions().sameOrigin() // H2 Console Needs this setting
 				.cacheControl(); // disable caching
+		httpSecurity
+				.authorizeRequests()
+				.antMatchers("/register")
+				.hasRole("admin");
 	}
 
 	@Override
