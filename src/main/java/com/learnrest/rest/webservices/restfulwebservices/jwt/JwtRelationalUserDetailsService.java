@@ -22,7 +22,7 @@ public class JwtRelationalUserDetailsService implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		JwtUserDetails user = jwtUserRepository.findByUsername(username);
+		JwtUserDetails user = jwtUserRepository.findByUserName(username);
 //		System.out.println("username is: " + username);
 		if (user == null) {
 			throw new UsernameNotFoundException(String.format("USER_NOT_FOUND '%s'.", username));

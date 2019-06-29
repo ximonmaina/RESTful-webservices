@@ -60,8 +60,7 @@ public class JWTWebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.and()
 				.authorizeRequests()
 					.antMatchers("/register")
-				.access("hasRole('ADMIN')")
-				.anyRequest();
+				.access("hasRole('ADMIN')");
 
 
 
@@ -73,10 +72,6 @@ public class JWTWebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 		httpSecurity.headers().frameOptions().sameOrigin() // H2 Console Needs this setting
 				.cacheControl(); // disable caching
-		httpSecurity
-				.authorizeRequests()
-				.antMatchers("/register")
-				.hasRole("admin");
 	}
 
 	@Override

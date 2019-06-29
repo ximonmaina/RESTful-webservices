@@ -2,8 +2,11 @@ package com.learnrest.rest.webservices.restfulwebservices.jwt;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,6 +16,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "user")
 public class JwtUserDetails implements UserDetails {
 
@@ -22,87 +27,63 @@ public class JwtUserDetails implements UserDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private  Long id;
-	private  String username;
-	private  String password;
-	private  String fullname;
-	private  String city;
-	private  String zip;
-	private  long phonenumber;
-	private  String roles;
-
-	 private JwtUserDetails() {}
+	@Column(name = "user_name", nullable = false, unique = true)
+	private String userName;
+	@Column(name = "password", nullable = false, unique = true, length = 255)
+	private String password;
+	@Column(name = "first_name")
+	private String firstName;
+	@Column(name = "last_name")
+	private String lastName;
+	@Column(name = "middle_name")
+	private String middleName;
+	@Column(name = "display_name")
+	private String displayName;
+	@Column(name = "country", length = 20)
+	private String country;
+	@Column(name = "county", length = 20)
+	private String county;
+	@Column(name = "phone_number", length = 20, unique = true)
+	private String phoneNumber;
+	@Column(name = "roles")
+	private String roles;
+	@Column(name = "id_number", unique = true)
+	private long idNumber;
+	@Column(name = "email_address", unique = true)
+	private String emailAddress;
+	@Column(name = "po_box_address")
+	private String poBoxAddress;
+	@Column(name = "join_date")
+	private Date joinDate;
 
 	@Transient
 	private Collection<? extends GrantedAuthority> authorities;
 
+	public JwtUserDetails() {
+	}
 
-
-
-
-	public JwtUserDetails( Long id,  String username, String password, String fullname,
-						   String city, String zip, long phonenumber, String roles) {
-		this.id = id;
-		this.username = username;
+	public JwtUserDetails(String userName, String password, String firstName, String lastName,
+						  String middleName, String displayName, String country, String county, String phoneNumber,
+						  String roles, long idNumber, String emailAddress, String poBoxAddress, Date joinDate) {
+		this.userName = userName;
 		this.password = password;
-		this.fullname = fullname;
-		this.city = city;
-		this.zip = zip;
-		this.phonenumber = phonenumber;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.middleName = middleName;
+		this.displayName = displayName;
+		this.country = country;
+		this.county = county;
+		this.phoneNumber = phoneNumber;
 		this.roles = roles;
+		this.idNumber = idNumber;
+		this.emailAddress = emailAddress;
+		this.poBoxAddress = poBoxAddress;
+		this.joinDate = joinDate;
 
 		List<SimpleGrantedAuthority> authorities = new ArrayList<SimpleGrantedAuthority>();
 		authorities.add(new SimpleGrantedAuthority(roles));
 
 		this.authorities = authorities;
-	}
-
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public void setFullname(String fullname) {
-		this.fullname = fullname;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public void setZip(String zip) {
-		this.zip = zip;
-	}
-
-	public void setPhonenumber(long phonenumber) {
-		this.phonenumber = phonenumber;
-	}
-
-	public void setRoles(String roles) {
-		this.roles = roles;
-	}
-
-	public String getRoles() {
-		return roles;
-	}
-
-	public String getFullname() {
-		return fullname;
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public String getZip() {
-		return zip;
-	}
-
-	public long getPhonenumber() {
-		return phonenumber;
 	}
 
 	@JsonIgnore
@@ -112,7 +93,7 @@ public class JwtUserDetails implements UserDetails {
 
 	@Override
 	public String getUsername() {
-		return username;
+		return userName;
 	}
 
 	@JsonIgnore
@@ -159,13 +140,20 @@ public class JwtUserDetails implements UserDetails {
 	public String toString() {
 		return "JwtUserDetails{" +
 				"id=" + id +
-				", username='" + username + '\'' +
+				", userName='" + userName + '\'' +
 				", password='" + password + '\'' +
-				", fullname='" + fullname + '\'' +
-				", city='" + city + '\'' +
-				", zip='" + zip + '\'' +
-				", phonenumber=" + phonenumber +
+				", firstName='" + firstName + '\'' +
+				", lastName='" + lastName + '\'' +
+				", middleName='" + middleName + '\'' +
+				", displayName='" + displayName + '\'' +
+				", country='" + country + '\'' +
+				", county='" + county + '\'' +
+				", phoneNumber='" + phoneNumber + '\'' +
 				", roles='" + roles + '\'' +
+				", idNumber=" + idNumber +
+				", emailAddress='" + emailAddress + '\'' +
+				", poBoxAddress='" + poBoxAddress + '\'' +
+				", joinDate=" + joinDate +
 				", authorities=" + authorities +
 				'}';
 	}

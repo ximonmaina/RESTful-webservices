@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.Date;
 import java.util.Optional;
 
 @RestController
@@ -36,7 +37,7 @@ public class UserRegistrationController {
 
     @GetMapping("/getuser/{id}")
     public UserData getUser(@PathVariable long id) {
-        Optional<UserData> findUser = this.userRepo.findById(id);
+        Optional<UserData> findUser = this.userRepo.findUserDataById(id);
 
         if (findUser.isPresent()) {
             return findUser.get();
@@ -49,6 +50,8 @@ public class UserRegistrationController {
     @PostMapping("/adduser")
     public ResponseEntity<Void> createUser(@RequestBody UserData userDetails){
              userDetails.setPassword(passwordEncoder.encode(userDetails.getPassword()));
+             userDetails.setDisplayName(userDetails.getFirstName() + ' ' + userDetails.getLastName());
+             userDetails.setJoinDate(new Date());
         System.out.println("Output" + userDetails.toString());
              UserData createdUser = this.userRepo.save(userDetails);
 
@@ -61,7 +64,13 @@ public class UserRegistrationController {
 
     @PutMapping("/updateuser")
     public ResponseEntity<UserData> updateTodo(@RequestBody UserData userData){
-        userData.setPassword(passwordEncoder.encode(userData.getPassword()));
+        UserData getUser = this.userRepo.findById(userData.getId());
+        if (userData.getPassword() != getUser.getPassword()) {
+            userData.setPassword(passwordEncoder.encode(userData.getPassword()));
+        }
+
+        userData.setDisplayName(userData.getFirstName() + ' ' + userData.getLastName());
+        userData.setJoinDate(new Date());
         System.out.println("Output" + userData.toString());
         UserData updatedUser = this.userRepo.save(userData);
 
