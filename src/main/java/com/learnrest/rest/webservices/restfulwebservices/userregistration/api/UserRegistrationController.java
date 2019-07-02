@@ -52,7 +52,7 @@ public class UserRegistrationController {
              userDetails.setPassword(passwordEncoder.encode(userDetails.getPassword()));
              userDetails.setDisplayName(userDetails.getFirstName() + ' ' + userDetails.getLastName());
              userDetails.setJoinDate(new Date());
-        System.out.println("Output" + userDetails.toString());
+//        System.out.println("Output" + userDetails.toString());
              UserData createdUser = this.userRepo.save(userDetails);
 
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
@@ -62,10 +62,10 @@ public class UserRegistrationController {
 
     }
 
-    @PutMapping("/updateuser")
+    @PatchMapping("/updateuser")
     public ResponseEntity<UserData> updateTodo(@RequestBody UserData userData){
         UserData getUser = this.userRepo.findById(userData.getId());
-        if (userData.getPassword() != getUser.getPassword()) {
+        if (userData.getPassword() == getUser.getPassword()) {
             userData.setPassword(passwordEncoder.encode(userData.getPassword()));
         }
 
