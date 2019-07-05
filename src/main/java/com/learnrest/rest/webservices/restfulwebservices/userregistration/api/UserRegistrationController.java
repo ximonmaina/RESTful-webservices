@@ -2,6 +2,7 @@ package com.learnrest.rest.webservices.restfulwebservices.userregistration.api;
 
 import com.learnrest.rest.webservices.restfulwebservices.userregistration.domain.UserData;
 import com.learnrest.rest.webservices.restfulwebservices.userregistration.repository.UserDataRepository;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -45,6 +46,16 @@ public class UserRegistrationController {
         return null;
 
 
+    }
+
+    @GetMapping("/getrole/{username}")
+    public UserData getUserRole(@PathVariable String username) {
+        Optional<UserData> findUserWithRole = this.userRepo.findByUserName(username);
+
+        if (findUserWithRole.isPresent()) {
+            return findUserWithRole.get();
+        }
+        return null;
     }
 
     @PostMapping("/adduser")
