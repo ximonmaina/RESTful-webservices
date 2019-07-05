@@ -74,7 +74,7 @@ public class UserRegistrationController {
     }
 
     @PatchMapping("/updateuser")
-    public ResponseEntity<UserData> updateTodo(@RequestBody UserData userData){
+    public ResponseEntity<UserData> updateUser(@RequestBody UserData userData){
         UserData getUser = this.userRepo.findById(userData.getId());
         if (userData.getPassword() == getUser.getPassword()) {
             userData.setPassword(passwordEncoder.encode(userData.getPassword()));
