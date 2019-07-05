@@ -24,8 +24,9 @@ public class PatientTriageService {
         patientTriage.setId(patientData.getId());
         patientTriage.setPatientWeight(patientData.getPatientWeight());
         patientTriage.setPatientTemperature(patientData.getPatientTemperature());
-        patientTriage.setPatinetHeight(patientData.getPatinetHeight());
+        patientTriage.setPatinetHeight(patientData.getPatientHeight());
         patientTriage.setPatientBloodPressure(patientData.getPatientBloodPressure());
+        patientTriage.setStaffName(patientData.getStaffName());
         patientTriage.setPatient(patient);
 
         return this.patientTriageRepository.save(patientTriage);

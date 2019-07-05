@@ -25,6 +25,7 @@ CREATE TABLE IF NOT EXISTS patient_triage (
                                               pt_temp DECIMAL (7,2),
                                               pt_height DECIMAL(7,2),
                                               pt_blood_pressure VARCHAR(45),
+                                              pt_staff_name VARCHAR(45),
                                               patient_id bigint,
                                               FOREIGN KEY (patient_id) REFERENCES patient(id)
 );
@@ -35,5 +36,4 @@ values ('simon', 'maina', 'kariuki', 33432121, '1997-03-12', 22, 'male', 'Kenya'
         0790166592, '776-00290', 'ximo221@gmail.com', sysdate());
 
 
-insert into patient_triage (pt_weight, pt_temp, pt_height, pt_blood_pressure, patient_id)
-values (45.5,22,133,'123 mmhgg',1);
+insert into patient_triage (pt_weight, pt_temp, pt_height, pt_blood_pressure, pt_staff_name, patient_id) VALUES (34.4,22,133,'345 mmggh','simon',1);

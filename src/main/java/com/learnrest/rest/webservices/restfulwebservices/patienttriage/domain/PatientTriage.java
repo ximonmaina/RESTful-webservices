@@ -31,6 +31,9 @@ public class PatientTriage implements Serializable {
     @Column(name = "pt_blood_pressure")
     private String patientBloodPressure;
 
+    @Column(name = "pt_staff_name")
+    private String staffName;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "patient_id")
     private Patient patient;
