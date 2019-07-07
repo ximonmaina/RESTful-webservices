@@ -1,5 +1,6 @@
 package com.learnrest.rest.webservices.restfulwebservices.patient.api;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.learnrest.rest.webservices.restfulwebservices.patient.domain.Patient;
 import com.learnrest.rest.webservices.restfulwebservices.patient.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,7 @@ public class PatientController {
     @GetMapping("/getpatients")
     public ResponseEntity<Collection<Patient>> getAllPatients() {
         return new ResponseEntity<>(this.patientRepository.findAll(), HttpStatus.OK);
+
     }
 
     @GetMapping("/getpatient/{id}")

@@ -2,14 +2,15 @@ package com.learnrest.rest.webservices.restfulwebservices.patienttriage.domain;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.learnrest.rest.webservices.restfulwebservices.jsonserializers.PatientTriageSerializer;
 import com.learnrest.rest.webservices.restfulwebservices.patient.domain.Patient;
-import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
-
+@JsonSerialize(using = PatientTriageSerializer.class)
 @Entity
-@Data
 @Table(name = "patient_triage")
 public class PatientTriage implements Serializable {
 
@@ -34,8 +35,72 @@ public class PatientTriage implements Serializable {
     @Column(name = "pt_staff_name")
     private String staffName;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "patient_id")
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+//    @JsonManagedReference
     private Patient patient;
 
+    public PatientTriage() {
+    }
+
+    public long getId() {
+        return this.id;
+    }
+
+    public double getPatientWeight() {
+        return this.patientWeight;
+    }
+
+    public double getPatientTemperature() {
+        return this.patientTemperature;
+    }
+
+    public double getPatinetHeight() {
+        return this.patinetHeight;
+    }
+
+    public String getPatientBloodPressure() {
+        return this.patientBloodPressure;
+    }
+
+    public String getStaffName() {
+        return this.staffName;
+    }
+
+
+    public Patient getPatient() {
+        return this.patient;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setPatientWeight(double patientWeight) {
+        this.patientWeight = patientWeight;
+    }
+
+    public void setPatientTemperature(double patientTemperature) {
+        this.patientTemperature = patientTemperature;
+    }
+
+    public void setPatinetHeight(double patinetHeight) {
+        this.patinetHeight = patinetHeight;
+    }
+
+    public void setPatientBloodPressure(String patientBloodPressure) {
+        this.patientBloodPressure = patientBloodPressure;
+    }
+
+    public void setStaffName(String staffName) {
+        this.staffName = staffName;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
+
+
+    public String toString() {
+        return "PatientTriage(id=" + this.getId() + ", patientWeight=" + this.getPatientWeight() + ", patientTemperature=" + this.getPatientTemperature() + ", patinetHeight=" + this.getPatinetHeight() + ", patientBloodPressure=" + this.getPatientBloodPressure() + ", staffName=" + this.getStaffName() + ", patient=" + this.getPatient() + ")";
+    }
 }
