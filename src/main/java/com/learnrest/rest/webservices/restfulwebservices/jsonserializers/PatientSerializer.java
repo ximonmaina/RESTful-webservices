@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 import com.learnrest.rest.webservices.restfulwebservices.patient.domain.Patient;
 import com.learnrest.rest.webservices.restfulwebservices.patienttriage.domain.PatientTriage;
+import com.learnrest.rest.webservices.restfulwebservices.treatment.domain.Treatment;
 
 import java.io.IOException;
 
@@ -44,6 +45,18 @@ public class PatientSerializer extends StdSerializer<Patient> {
             jsonGenerator.writeNumberField("patientHeight", patientTriage.getPatinetHeight());
             jsonGenerator.writeStringField("patientBloodPressure", patientTriage.getPatientBloodPressure());
             jsonGenerator.writeStringField("staffName", patientTriage.getStaffName());
+            jsonGenerator.writeEndObject();
+        }
+        jsonGenerator.writeEndArray();
+        jsonGenerator.writeArrayFieldStart("patientTreatment");
+        for (Treatment treatment: patient.getTreatments()) {
+            jsonGenerator.writeStartObject();
+            jsonGenerator.writeNumberField("id", treatment.getId());
+            jsonGenerator.writeStringField("disease", treatment.getDisease());
+            jsonGenerator.writeStringField("caseNotes", treatment.getCaseNotes());
+            jsonGenerator.writeStringField("drugPrescription", treatment.getDrugPrescription());
+            jsonGenerator.writeStringField("nameOfDoctor", treatment.getStaffName());
+            jsonGenerator.writeObjectField("dateOfDiagnosis", treatment.getDateOfDiagnosis());
             jsonGenerator.writeEndObject();
         }
         jsonGenerator.writeEndArray();

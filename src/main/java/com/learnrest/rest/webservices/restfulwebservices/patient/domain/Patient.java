@@ -1,11 +1,12 @@
 package com.learnrest.rest.webservices.restfulwebservices.patient.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.learnrest.rest.webservices.restfulwebservices.jsonserializers.PatientSerializer;
 import com.learnrest.rest.webservices.restfulwebservices.patienttriage.domain.PatientTriage;
+import com.learnrest.rest.webservices.restfulwebservices.treatment.domain.Treatment;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -70,6 +71,18 @@ public class Patient  implements Serializable {
     @JoinColumn(name = "patient_id")
 //    @JsonBackReference
     private Set<PatientTriage> patientTriages = new HashSet<>();
+
+    @OneToMany
+    @JoinColumn(name = "patient_id")
+    private Set<Treatment> treatments = new HashSet<>();
+
+    public Set<Treatment> getTreatments() {
+        return treatments;
+    }
+
+    public void setTreatments(Set<Treatment> treatments) {
+        this.treatments = treatments;
+    }
 
     public Patient() {
     }
@@ -212,7 +225,9 @@ public class Patient  implements Serializable {
                 ", patientPhoneNumber=" + patientPhoneNumber +
                 ", patientAddress='" + patientAddress + '\'' +
                 ", patientEmailAddress='" + patientEmailAddress + '\'' +
+                ", patientJoinDate=" + patientJoinDate +
                 ", patientTriages=" + patientTriages +
+                ", treatments=" + treatments +
                 '}';
     }
 }
