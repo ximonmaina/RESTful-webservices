@@ -1,0 +1,1 @@
+ALTER TABLE treatment ADD name_of_doctor VARCHAR(100);

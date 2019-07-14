@@ -5,7 +5,9 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.learnrest.rest.webservices.restfulwebservices.jsonserializers.PatientSerializer;
+import com.learnrest.rest.webservices.restfulwebservices.laboratory.domain.Laboratory;
 import com.learnrest.rest.webservices.restfulwebservices.patienttriage.domain.PatientTriage;
+import com.learnrest.rest.webservices.restfulwebservices.pharmacy.domain.Pharmacy;
 import com.learnrest.rest.webservices.restfulwebservices.treatment.domain.Treatment;
 import lombok.Data;
 
@@ -75,6 +77,30 @@ public class Patient  implements Serializable {
     @OneToMany
     @JoinColumn(name = "patient_id")
     private Set<Treatment> treatments = new HashSet<>();
+
+    @OneToMany
+    @JoinColumn(name = "patient_id")
+    private Set<Laboratory> laboratories = new HashSet<>();
+
+    @OneToMany
+    @JoinColumn(name = "patient_id")
+    private Set<Pharmacy> pharmacies = new HashSet<>();
+
+    public Set<Pharmacy> getPharmacies() {
+        return pharmacies;
+    }
+
+    public void setPharmacies(Set<Pharmacy> pharmacies) {
+        this.pharmacies = pharmacies;
+    }
+
+    public Set<Laboratory> getLaboratories() {
+        return laboratories;
+    }
+
+    public void setLaboratories(Set<Laboratory> laboratories) {
+        this.laboratories = laboratories;
+    }
 
     public Set<Treatment> getTreatments() {
         return treatments;
@@ -228,6 +254,8 @@ public class Patient  implements Serializable {
                 ", patientJoinDate=" + patientJoinDate +
                 ", patientTriages=" + patientTriages +
                 ", treatments=" + treatments +
+                ", laboratories=" + laboratories +
+                ", pharmacies=" + pharmacies +
                 '}';
     }
 }

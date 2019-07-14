@@ -1,0 +1,1 @@
+ALTER TABLE pharmacy ADD name_of_doctor VARCHAR(100);

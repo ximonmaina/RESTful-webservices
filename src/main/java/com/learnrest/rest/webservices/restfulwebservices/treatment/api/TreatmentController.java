@@ -26,7 +26,7 @@ public class TreatmentController {
 
     @GetMapping("/getAllTreatmentData")
     public ResponseEntity<Collection<Treatment>> getPatientTreatmentData() {
-        return new ResponseEntity<>(treatmentRepository.findAll(), HttpStatus.OK);
+        return new ResponseEntity<>(this.treatmentRepository.findAll(), HttpStatus.OK);
     }
 
     @GetMapping("/getTreatmentData/{id}")
