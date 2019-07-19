@@ -28,8 +28,8 @@ public class Pharmacy implements Serializable {
     @Column(name = "drug_notes", columnDefinition = "TEXT")
     private String drugNotes;
 
-    @Column(name = "drug_expiry_date")
-    private Date drugExpiryDate;
+    @Column(name = "drug_prescription_date")
+    private Date drugPrescriptionDate;
 
     @Column(name = "name_of_doctor")
     private String nameOfDoctor;
@@ -75,12 +75,12 @@ public class Pharmacy implements Serializable {
         this.drugNotes = drugNotes;
     }
 
-    public Date getDrugExpiryDate() {
-        return drugExpiryDate;
+    public Date getDrugPrescriptionDate() {
+        return drugPrescriptionDate;
     }
 
-    public void setDrugExpiryDate(Date drugExpiryDate) {
-        this.drugExpiryDate = drugExpiryDate;
+    public void setDrugPrescriptionDate(Date drugPrescriptionDate) {
+        this.drugPrescriptionDate = drugPrescriptionDate;
     }
 
     public String getStaffName() {
@@ -114,7 +114,7 @@ public class Pharmacy implements Serializable {
                 ", drugName='" + drugName + '\'' +
                 ", drugDosage='" + drugDosage + '\'' +
                 ", drugNotes='" + drugNotes + '\'' +
-                ", drugExpiryDate=" + drugExpiryDate +
+                ", drugPrescriptionDate=" + drugPrescriptionDate +
                 ", nameOfDoctor='" + nameOfDoctor + '\'' +
                 ", staffName='" + staffName + '\'' +
                 ", patient=" + patient +

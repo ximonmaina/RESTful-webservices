@@ -24,6 +24,8 @@ public class DrugPrescServiceImpl {
         if (patient != null) {
             drugPrescription.setDrugPrescription(drugPrescData.getDrugPrescription());
             drugPrescription.setDoctorName(drugPrescData.getDoctorName());
+            drugPrescription.setNumberOfDays(drugPrescData.getNumberOfDays());
+            drugPrescription.setUsagePerDay(drugPrescData.getUsagePerDay());
             drugPrescription.setDateOfPrescription(drugPrescData.getDateOfPrescription());
             drugPrescription.setPatient(patient);
             return this.drugPrescRepo.save(drugPrescription);
@@ -38,6 +40,8 @@ public class DrugPrescServiceImpl {
         updateDrugPrescription.setId(drugPrescData.getId());
         updateDrugPrescription.setDrugPrescription(drugPrescData.getDrugPrescription());
         updateDrugPrescription.setDoctorName(drugPrescData.getDoctorName());
+        updateDrugPrescription.setNumberOfDays(drugPrescData.getNumberOfDays());
+        updateDrugPrescription.setUsagePerDay(drugPrescData.getUsagePerDay());
         updateDrugPrescription.setDateOfPrescription(drugPrescData.getDateOfPrescription());
         updateDrugPrescription.setPatient(patient);
 

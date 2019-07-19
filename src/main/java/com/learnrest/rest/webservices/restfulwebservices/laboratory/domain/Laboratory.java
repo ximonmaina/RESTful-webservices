@@ -1,12 +1,15 @@
 package com.learnrest.rest.webservices.restfulwebservices.laboratory.domain;
 
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.learnrest.rest.webservices.restfulwebservices.jsonserializers.LaboratorySerializer;
 import com.learnrest.rest.webservices.restfulwebservices.patient.domain.Patient;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
+@JsonSerialize(using = LaboratorySerializer.class)
 @Entity
 @Table(name = "laboratory")
 public class Laboratory implements Serializable {

@@ -25,6 +25,12 @@ public class DrugPrescription implements Serializable {
     @Column(name = "doctor_name")
     private String doctorName;
 
+    @Column(name = "number_of_days")
+    private String numberOfDays;
+
+    @Column(name = "usage_per_day")
+    private String usagePerDay;
+
     @Column(name = "date_of_prescription")
     private Date dateOfPrescription;
 
@@ -32,6 +38,22 @@ public class DrugPrescription implements Serializable {
     private Patient patient;
 
     public DrugPrescription() {
+    }
+
+    public String getNumberOfDays() {
+        return numberOfDays;
+    }
+
+    public void setNumberOfDays(String numberOfDays) {
+        this.numberOfDays = numberOfDays;
+    }
+
+    public String getUsagePerDay() {
+        return usagePerDay;
+    }
+
+    public void setUsagePerDay(String usagePerDay) {
+        this.usagePerDay = usagePerDay;
     }
 
     public long getId() {
@@ -80,6 +102,8 @@ public class DrugPrescription implements Serializable {
                 "id=" + id +
                 ", drugPrescription='" + drugPrescription + '\'' +
                 ", doctorName='" + doctorName + '\'' +
+                ", numberOfDays='" + numberOfDays + '\'' +
+                ", usagePerDay='" + usagePerDay + '\'' +
                 ", dateOfPrescription=" + dateOfPrescription +
                 ", patient=" + patient +
                 '}';

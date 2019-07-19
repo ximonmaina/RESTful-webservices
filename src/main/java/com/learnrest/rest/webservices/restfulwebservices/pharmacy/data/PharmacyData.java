@@ -11,19 +11,19 @@ public class PharmacyData {
     private String drugName;
     private String drugDosage;
     private String drugNotes;
-    private Date drugExpiryDate;
+    private Date drugPrescriptionDate;
     private String nameOfDoctor;
     private String staffName;
     private long patient;
 
     public PharmacyData(long id, String drugName, String drugDosage,
-                        String drugNotes, Date drugExpiryDate, String nameOfDoctor,
+                        String drugNotes, Date drugPrescriptionDate, String nameOfDoctor,
                         String staffName, long patient) {
         this.id = id;
         this.drugName = drugName;
         this.drugDosage = drugDosage;
         this.drugNotes = drugNotes;
-        this.drugExpiryDate = drugExpiryDate;
+        this.drugPrescriptionDate = drugPrescriptionDate;
         this.nameOfDoctor = nameOfDoctor;
         this.staffName = staffName;
         this.patient = patient;

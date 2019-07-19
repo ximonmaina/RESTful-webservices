@@ -20,6 +20,8 @@ public class DrugPrescriptionSerializer extends StdSerializer<DrugPrescription> 
         jsonGenerator.writeNumberField("id", drugPrescription.getId());
         jsonGenerator.writeStringField("drugPrescription", drugPrescription.getDrugPrescription());
         jsonGenerator.writeStringField("doctorName", drugPrescription.getDoctorName());
+        jsonGenerator.writeStringField("numberOfDays", drugPrescription.getNumberOfDays());
+        jsonGenerator.writeStringField("usagePerDay", drugPrescription.getUsagePerDay());
         jsonGenerator.writeObjectField("dateOfPrescription", drugPrescription.getDateOfPrescription());
         jsonGenerator.writeArrayFieldStart("patient");
         jsonGenerator.writeStartObject();

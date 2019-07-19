@@ -26,7 +26,7 @@ public class PharmacyServiceImpl {
             pharmacy.setDrugName(pharmacyData.getDrugName());
             pharmacy.setDrugDosage(pharmacyData.getDrugDosage());
             pharmacy.setDrugNotes(pharmacyData.getDrugNotes());
-            pharmacy.setDrugExpiryDate(pharmacyData.getDrugExpiryDate());
+            pharmacy.setDrugPrescriptionDate(pharmacyData.getDrugPrescriptionDate());
             pharmacy.setNameOfDoctor(pharmacyData.getNameOfDoctor());
             pharmacy.setStaffName(pharmacyData.getStaffName());
             pharmacy.setPatient(patient);
