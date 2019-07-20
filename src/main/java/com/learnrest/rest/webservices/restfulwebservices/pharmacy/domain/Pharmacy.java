@@ -19,12 +19,9 @@ public class Pharmacy implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "drug_name")
-    private String drugName;
 
-
-    @Column(name = "drug_notes", columnDefinition = "TEXT")
-    private String drugNotes;
+    @Column(name = "drug_prescription", columnDefinition = "TEXT")
+    private String drugPrescription;
 
     @Column(name = "drug_prescription_date")
     private Date drugPrescriptionDate;
@@ -49,20 +46,12 @@ public class Pharmacy implements Serializable {
         this.id = id;
     }
 
-    public String getDrugName() {
-        return drugName;
+    public String getDrugPrescription() {
+        return drugPrescription;
     }
 
-    public void setDrugName(String drugName) {
-        this.drugName = drugName;
-    }
-
-    public String getDrugNotes() {
-        return drugNotes;
-    }
-
-    public void setDrugNotes(String drugNotes) {
-        this.drugNotes = drugNotes;
+    public void setDrugPrescription(String drugPrescription) {
+        this.drugPrescription = drugPrescription;
     }
 
     public Date getDrugPrescriptionDate() {
@@ -101,8 +90,7 @@ public class Pharmacy implements Serializable {
     public String toString() {
         return "Pharmacy{" +
                 "id=" + id +
-                ", drugName='" + drugName + '\'' +
-                ", drugNotes='" + drugNotes + '\'' +
+                ", drugPrescription='" + drugPrescription + '\'' +
                 ", drugPrescriptionDate=" + drugPrescriptionDate +
                 ", nameOfDoctor='" + nameOfDoctor + '\'' +
                 ", staffName='" + staffName + '\'' +

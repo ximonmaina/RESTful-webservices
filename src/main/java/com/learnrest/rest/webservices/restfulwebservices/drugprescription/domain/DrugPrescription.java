@@ -19,9 +19,6 @@ public class DrugPrescription implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "drug_name")
-    private String drugName;
-
     @Column(name = "drug_prescription", columnDefinition = "TEXT")
     private String drugPrescription;
 
@@ -36,15 +33,6 @@ public class DrugPrescription implements Serializable {
 
     public DrugPrescription() {
     }
-
-    public String getDrugName() {
-        return drugName;
-    }
-
-    public void setDrugName(String drugName) {
-        this.drugName = drugName;
-    }
-
 
     public long getId() {
         return id;
@@ -90,7 +78,6 @@ public class DrugPrescription implements Serializable {
     public String toString() {
         return "DrugPrescription{" +
                 "id=" + id +
-                ", drugName='" + drugName + '\'' +
                 ", drugPrescription='" + drugPrescription + '\'' +
                 ", doctorName='" + doctorName + '\'' +
                 ", dateOfPrescription=" + dateOfPrescription +

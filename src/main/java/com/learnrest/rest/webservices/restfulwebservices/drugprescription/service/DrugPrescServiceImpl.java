@@ -22,7 +22,6 @@ public class DrugPrescServiceImpl {
 
         DrugPrescription drugPrescription = new DrugPrescription();
         if (patient != null) {
-            drugPrescription.setDrugName(drugPrescData.getDrugName());
             drugPrescription.setDrugPrescription(drugPrescData.getDrugPrescription());
             drugPrescription.setDoctorName(drugPrescData.getDoctorName());
             drugPrescription.setDateOfPrescription(drugPrescData.getDateOfPrescription());
@@ -37,7 +36,6 @@ public class DrugPrescServiceImpl {
         DrugPrescription updateDrugPrescription = new DrugPrescription();
 
         updateDrugPrescription.setId(drugPrescData.getId());
-        updateDrugPrescription.setDrugName(drugPrescData.getDrugName());
         updateDrugPrescription.setDrugPrescription(drugPrescData.getDrugPrescription());
         updateDrugPrescription.setDoctorName(drugPrescData.getDoctorName());
         updateDrugPrescription.setDateOfPrescription(drugPrescData.getDateOfPrescription());

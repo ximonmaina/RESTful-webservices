@@ -8,19 +8,16 @@ import java.util.Date;
 public class PharmacyData {
 
     private long id;
-    private String drugName;
-    private String drugNotes;
+    private String drugPrescription;
     private Date drugPrescriptionDate;
     private String nameOfDoctor;
     private String staffName;
     private long patient;
 
-    public PharmacyData(long id, String drugName,
-                        String drugNotes, Date drugPrescriptionDate, String nameOfDoctor,
-                        String staffName, long patient) {
+    public PharmacyData(long id, String drugPrescription,
+                        Date drugPrescriptionDate, String nameOfDoctor, String staffName, long patient) {
         this.id = id;
-        this.drugName = drugName;
-        this.drugNotes = drugNotes;
+        this.drugPrescription = drugPrescription;
         this.drugPrescriptionDate = drugPrescriptionDate;
         this.nameOfDoctor = nameOfDoctor;
         this.staffName = staffName;

@@ -23,8 +23,7 @@ public class PharmacyServiceImpl {
 
         if (patient != null) {
             pharmacy.setId(pharmacyData.getId());
-            pharmacy.setDrugName(pharmacyData.getDrugName());
-            pharmacy.setDrugNotes(pharmacyData.getDrugNotes());
+            pharmacy.setDrugPrescription(pharmacyData.getDrugPrescription());
             pharmacy.setDrugPrescriptionDate(pharmacyData.getDrugPrescriptionDate());
             pharmacy.setNameOfDoctor(pharmacyData.getNameOfDoctor());
             pharmacy.setStaffName(pharmacyData.getStaffName());
