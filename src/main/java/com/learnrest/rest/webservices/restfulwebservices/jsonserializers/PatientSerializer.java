@@ -56,7 +56,6 @@ public class PatientSerializer extends StdSerializer<Patient> {
             jsonGenerator.writeNumberField("id", treatment.getId());
             jsonGenerator.writeStringField("disease", treatment.getDisease());
             jsonGenerator.writeStringField("caseNotes", treatment.getCaseNotes());
-            jsonGenerator.writeStringField("drugPrescription", treatment.getDrugPrescription());
             jsonGenerator.writeStringField("nameOfDoctor", treatment.getStaffName());
             jsonGenerator.writeObjectField("dateOfDiagnosis", treatment.getDateOfDiagnosis());
             jsonGenerator.writeEndObject();
@@ -79,7 +78,6 @@ public class PatientSerializer extends StdSerializer<Patient> {
             jsonGenerator.writeStartObject();
             jsonGenerator.writeNumberField("id", pharmacy.getId());
             jsonGenerator.writeStringField("drugName", pharmacy.getDrugName());
-            jsonGenerator.writeStringField("drugDosage", pharmacy.getDrugDosage());
             jsonGenerator.writeStringField("drugNotes", pharmacy.getDrugNotes());
             jsonGenerator.writeObjectField("drugExpiryDate", pharmacy.getDrugPrescriptionDate());
             jsonGenerator.writeStringField("nameOfDoctor", pharmacy.getNameOfDoctor());

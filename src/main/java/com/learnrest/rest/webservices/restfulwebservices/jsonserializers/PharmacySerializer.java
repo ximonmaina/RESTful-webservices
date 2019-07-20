@@ -20,7 +20,6 @@ public class PharmacySerializer extends StdSerializer<Pharmacy> {
         jsonGenerator.writeStartObject();
         jsonGenerator.writeNumberField("id", pharmacy.getId());
         jsonGenerator.writeStringField("drugName", pharmacy.getDrugName());
-        jsonGenerator.writeStringField("drugDosage", pharmacy.getDrugDosage());
         jsonGenerator.writeStringField("drugNotes", pharmacy.getDrugNotes());
         jsonGenerator.writeObjectField("drugExpiryDate", pharmacy.getDrugPrescriptionDate());
         jsonGenerator.writeStringField("nameOfDoctor", pharmacy.getNameOfDoctor());

@@ -25,9 +25,6 @@ public class Treatment implements Serializable {
     @Column(name = "t_notes", columnDefinition = "TEXT")
     private String caseNotes;
 
-    @Column(name = "drug_prescription")
-    private String drugPrescription;
-
     @Column(name = "t_staff_name")
     private String staffName;
 
@@ -64,14 +61,6 @@ public class Treatment implements Serializable {
         this.caseNotes = caseNotes;
     }
 
-    public String getDrugPrescription() {
-        return drugPrescription;
-    }
-
-    public void setDrugPrescription(String drugPrescription) {
-        this.drugPrescription = drugPrescription;
-    }
-
     public String getStaffName() {
         return staffName;
     }
@@ -102,7 +91,6 @@ public class Treatment implements Serializable {
                 "id=" + id +
                 ", disease='" + disease + '\'' +
                 ", caseNotes='" + caseNotes + '\'' +
-                ", drugPrescription='" + drugPrescription + '\'' +
                 ", staffName='" + staffName + '\'' +
                 ", dateOfDiagnosis=" + dateOfDiagnosis +
                 ", patient=" + patient +

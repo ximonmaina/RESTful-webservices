@@ -22,8 +22,6 @@ public class Pharmacy implements Serializable {
     @Column(name = "drug_name")
     private String drugName;
 
-    @Column(name = "drug_dosage")
-    private String drugDosage;
 
     @Column(name = "drug_notes", columnDefinition = "TEXT")
     private String drugNotes;
@@ -57,14 +55,6 @@ public class Pharmacy implements Serializable {
 
     public void setDrugName(String drugName) {
         this.drugName = drugName;
-    }
-
-    public String getDrugDosage() {
-        return drugDosage;
-    }
-
-    public void setDrugDosage(String drugDosage) {
-        this.drugDosage = drugDosage;
     }
 
     public String getDrugNotes() {
@@ -112,7 +102,6 @@ public class Pharmacy implements Serializable {
         return "Pharmacy{" +
                 "id=" + id +
                 ", drugName='" + drugName + '\'' +
-                ", drugDosage='" + drugDosage + '\'' +
                 ", drugNotes='" + drugNotes + '\'' +
                 ", drugPrescriptionDate=" + drugPrescriptionDate +
                 ", nameOfDoctor='" + nameOfDoctor + '\'' +

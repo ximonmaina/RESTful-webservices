@@ -24,7 +24,6 @@ public class TreatmentService {
         treatment.setId(treatmentData.getId());
         treatment.setDisease(treatmentData.getDisease());
         treatment.setCaseNotes(treatmentData.getCaseNotes());
-        treatment.setDrugPrescription(treatmentData.getDrugPrescription());
         treatment.setStaffName(treatmentData.getStaffName());
         treatment.setDateOfDiagnosis(treatmentData.getDateOfDiagnosis());
         treatment.setPatient(patient);

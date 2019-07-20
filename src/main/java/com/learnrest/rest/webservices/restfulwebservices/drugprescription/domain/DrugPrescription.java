@@ -19,17 +19,14 @@ public class DrugPrescription implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Column(name = "drug_name")
+    private String drugName;
+
     @Column(name = "drug_prescription", columnDefinition = "TEXT")
     private String drugPrescription;
 
     @Column(name = "doctor_name")
     private String doctorName;
-
-    @Column(name = "number_of_days")
-    private String numberOfDays;
-
-    @Column(name = "usage_per_day")
-    private String usagePerDay;
 
     @Column(name = "date_of_prescription")
     private Date dateOfPrescription;
@@ -40,21 +37,14 @@ public class DrugPrescription implements Serializable {
     public DrugPrescription() {
     }
 
-    public String getNumberOfDays() {
-        return numberOfDays;
+    public String getDrugName() {
+        return drugName;
     }
 
-    public void setNumberOfDays(String numberOfDays) {
-        this.numberOfDays = numberOfDays;
+    public void setDrugName(String drugName) {
+        this.drugName = drugName;
     }
 
-    public String getUsagePerDay() {
-        return usagePerDay;
-    }
-
-    public void setUsagePerDay(String usagePerDay) {
-        this.usagePerDay = usagePerDay;
-    }
 
     public long getId() {
         return id;
@@ -100,10 +90,9 @@ public class DrugPrescription implements Serializable {
     public String toString() {
         return "DrugPrescription{" +
                 "id=" + id +
+                ", drugName='" + drugName + '\'' +
                 ", drugPrescription='" + drugPrescription + '\'' +
                 ", doctorName='" + doctorName + '\'' +
-                ", numberOfDays='" + numberOfDays + '\'' +
-                ", usagePerDay='" + usagePerDay + '\'' +
                 ", dateOfPrescription=" + dateOfPrescription +
                 ", patient=" + patient +
                 '}';

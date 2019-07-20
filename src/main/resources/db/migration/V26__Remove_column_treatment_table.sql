@@ -1,0 +1,1 @@
+ALTER TABLE treatment DROP COLUMN drug_prescription;
