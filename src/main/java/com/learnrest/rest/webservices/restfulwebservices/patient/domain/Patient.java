@@ -69,10 +69,12 @@ public class Patient  implements Serializable {
     @Column(name = "p_join_date")
     private Date patientJoinDate;
 
+    @Transient
     @OneToMany
     @JoinColumn(name = "patient_id")
 //    @JsonBackReference
     private Set<PatientTriage> patientTriages = new HashSet<>();
+
 
     @OneToMany
     @JoinColumn(name = "patient_id")

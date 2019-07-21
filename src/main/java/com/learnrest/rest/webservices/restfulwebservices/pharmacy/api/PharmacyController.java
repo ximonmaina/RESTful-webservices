@@ -25,12 +25,12 @@ public class PharmacyController {
     @Autowired
     PharmacyServiceImpl pharmacyService;
 
-    @GetMapping("getAllPharmacyData")
+    @GetMapping("/getAllPharmacyData")
     public ResponseEntity<Collection<Pharmacy>> getPharmacyData() {
         return new ResponseEntity<>(this.pharmacyRepository.findAll(), HttpStatus.OK);
     }
 
-    @GetMapping("getPharmacyData/{id}")
+    @GetMapping("/getPharmacyData/{id}")
     public  ResponseEntity<Pharmacy> getPharmData(@PathVariable long id) {
         Pharmacy pharmacy = this.pharmacyRepository.findById(id);
 

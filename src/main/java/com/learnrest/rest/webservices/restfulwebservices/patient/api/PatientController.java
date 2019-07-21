@@ -3,6 +3,7 @@ package com.learnrest.rest.webservices.restfulwebservices.patient.api;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.learnrest.rest.webservices.restfulwebservices.patient.domain.Patient;
 import com.learnrest.rest.webservices.restfulwebservices.patient.repository.PatientRepository;
+import com.learnrest.rest.webservices.restfulwebservices.patient.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +25,9 @@ public class PatientController {
     public PatientController(PatientRepository patientRepository) {
         this.patientRepository = patientRepository;
     }
+
+    @Autowired
+    private PatientService patientService;
 
     @GetMapping("/getpatients")
     public ResponseEntity<Collection<Patient>> getAllPatients() {
@@ -54,13 +58,10 @@ public class PatientController {
         return null;
     }
 
-    @PutMapping("/updatepatient")
+    @PatchMapping("/updatepatient")
     public ResponseEntity<Patient> updatePatient(@RequestBody Patient patient) {
-        Patient getPatient = this.patientRepository.findPatientById(patient.getId());
-
-            getPatient.setPatientJoinDate(getPatient.getPatientJoinDate());
-            Patient savedPatient = this.patientRepository.save(getPatient);
-            return new ResponseEntity<Patient>(patient, HttpStatus.OK);
+            Patient updatePatient= this.patientService.updatePatient(patient);
+            return new ResponseEntity<Patient>(updatePatient, HttpStatus.OK);
 
 
     }
