@@ -8,6 +8,8 @@ import com.learnrest.rest.webservices.restfulwebservices.pharmacy.repository.Pha
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+
 @Service
 public class PharmacyServiceImpl {
 
@@ -24,7 +26,7 @@ public class PharmacyServiceImpl {
         if (patient != null) {
             pharmacy.setId(pharmacyData.getId());
             pharmacy.setDrugPrescription(pharmacyData.getDrugPrescription());
-            pharmacy.setDrugPrescriptionDate(pharmacyData.getDrugPrescriptionDate());
+            pharmacy.setDrugPrescriptionDate(new Date());
             pharmacy.setNameOfDoctor(pharmacyData.getNameOfDoctor());
             pharmacy.setStaffName(pharmacyData.getStaffName());
             pharmacy.setPatient(patient);

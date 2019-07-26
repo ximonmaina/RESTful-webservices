@@ -1,0 +1,1 @@
+ALTER TABLE pharmacy ADD dateOfPrescription DATE;

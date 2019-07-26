@@ -8,6 +8,8 @@ import com.learnrest.rest.webservices.restfulwebservices.patienttriage.repositor
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+
 @Service
 public class PatientTriageService {
 
@@ -21,16 +23,32 @@ public class PatientTriageService {
         Patient patient = this.patientRepository.findPatientById(patientData.getPatient());
         PatientTriage patientTriage = new PatientTriage();
 
+        patientTriage.setPatientWeight(patientData.getPatientWeight());
+        patientTriage.setPatientTemperature(patientData.getPatientTemperature());
+        patientTriage.setPatinetHeight(patientData.getPatientHeight());
+        patientTriage.setPatientBloodPressure(patientData.getPatientBloodPressure());
+        patientTriage.setStaffName(patientData.getStaffName());
+        patientTriage.setTriageDate(new Date());
+        patientTriage.setPatient(patient);
+
+        return this.patientTriageRepository.save(patientTriage);
+
+    }
+
+    public PatientTriage updatePatientTriage(PatientData patientData) {
+        Patient patient = this.patientRepository.findPatientById(patientData.getPatient());
+        PatientTriage patientTriage = new PatientTriage();
+
         patientTriage.setId(patientData.getId());
         patientTriage.setPatientWeight(patientData.getPatientWeight());
         patientTriage.setPatientTemperature(patientData.getPatientTemperature());
         patientTriage.setPatinetHeight(patientData.getPatientHeight());
         patientTriage.setPatientBloodPressure(patientData.getPatientBloodPressure());
         patientTriage.setStaffName(patientData.getStaffName());
+        patientTriage.setTriageDate(new Date());
         patientTriage.setPatient(patient);
 
         return this.patientTriageRepository.save(patientTriage);
-
     }
 
 

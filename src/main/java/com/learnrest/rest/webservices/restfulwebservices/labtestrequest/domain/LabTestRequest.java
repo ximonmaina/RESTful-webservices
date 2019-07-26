@@ -28,10 +28,21 @@ public class LabTestRequest implements Serializable {
     @Column(name = "doctor_name")
     private String doctorName;
 
+    @Column(name = "status")
+    private boolean status;
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private Patient patient;
 
     public LabTestRequest() {
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
     public long getId() {
@@ -81,6 +92,7 @@ public class LabTestRequest implements Serializable {
                 ", testName='" + testName + '\'' +
                 ", dateOfRequest=" + dateOfRequest +
                 ", doctorName='" + doctorName + '\'' +
+                ", status=" + status +
                 ", patient=" + patient +
                 '}';
     }

@@ -1,0 +1,1 @@
+ALTER TABLE pharmacy DROP COLUMN dateOfPrescription;

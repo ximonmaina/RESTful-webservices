@@ -21,6 +21,7 @@ public class LabTestReqSerializer extends StdSerializer<LabTestRequest> {
         jsonGenerator.writeStringField("testName", labTestRequest.getTestName());
         jsonGenerator.writeObjectField("dateOfRequest", labTestRequest.getDateOfRequest());
         jsonGenerator.writeStringField("doctorName", labTestRequest.getDoctorName());
+        jsonGenerator.writeBooleanField("status", labTestRequest.isStatus());
         jsonGenerator.writeArrayFieldStart("patient");
         jsonGenerator.writeStartObject();
         jsonGenerator.writeNumberField("id", labTestRequest.getPatient().getId());

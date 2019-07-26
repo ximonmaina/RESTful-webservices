@@ -24,6 +24,7 @@ public class LabTestReqServiceImpl {
             labTestRequest.setTestName(labTestReqData.getTestName());
             labTestRequest.setDateOfRequest(labTestReqData.getDateOfRequest());
             labTestRequest.setDoctorName(labTestReqData.getDoctorName());
+            labTestRequest.setStatus(labTestReqData.isStatus());
             labTestRequest.setPatient(patient);
 
             return this.labTestRequestRepo.save(labTestRequest);
@@ -39,6 +40,7 @@ public class LabTestReqServiceImpl {
             labTestRequest.setTestName(labTestReqData.getTestName());
             labTestRequest.setDateOfRequest(labTestReqData.getDateOfRequest());
             labTestRequest.setDoctorName(labTestReqData.getDoctorName());
+            labTestRequest.setStatus(labTestReqData.isStatus());
             labTestRequest.setPatient(patient);
 
             return this.labTestRequestRepo.save(labTestRequest);

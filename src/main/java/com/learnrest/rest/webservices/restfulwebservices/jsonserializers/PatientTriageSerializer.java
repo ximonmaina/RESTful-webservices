@@ -33,6 +33,7 @@ public class PatientTriageSerializer extends StdSerializer<PatientTriage> {
         jsonGenerator.writeNumberField("patientHeight", patientTriage.getPatinetHeight());
         jsonGenerator.writeStringField("patientBloodPressure", patientTriage.getPatientBloodPressure());
         jsonGenerator.writeStringField("staffName", patientTriage.getStaffName());
+        jsonGenerator.writeObjectField("triageDate", patientTriage.getTriageDate());
         jsonGenerator.writeArrayFieldStart("patient");
         jsonGenerator.writeStartObject();
         jsonGenerator.writeNumberField("id", patientTriage.getPatient().getId());

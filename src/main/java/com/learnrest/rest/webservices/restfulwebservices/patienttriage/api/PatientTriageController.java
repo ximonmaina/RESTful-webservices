@@ -50,4 +50,10 @@ public class PatientTriageController {
         }
         return null;
     }
+
+    @PatchMapping("/updatePatientTraige")
+    public ResponseEntity<PatientTriage> update(@RequestBody PatientData patientData) {
+        PatientTriage patientTriage = this.patientTriageService.updatePatientTriage(patientData);
+        return new ResponseEntity<>(patientTriage, HttpStatus.OK);
+    }
 }

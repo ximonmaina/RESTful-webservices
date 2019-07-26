@@ -9,6 +9,8 @@ import com.learnrest.rest.webservices.restfulwebservices.patient.domain.Patient;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
+
 @JsonSerialize(using = PatientTriageSerializer.class)
 @Entity
 @Table(name = "patient_triage")
@@ -34,6 +36,9 @@ public class PatientTriage implements Serializable {
 
     @Column(name = "pt_staff_name")
     private String staffName;
+
+    @Column(name = "triage_date")
+    private Date triageDate;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
 //    @JsonManagedReference
@@ -99,8 +104,25 @@ public class PatientTriage implements Serializable {
         this.patient = patient;
     }
 
+    public Date getTriageDate() {
+        return triageDate;
+    }
 
+    public void setTriageDate(Date triageDate) {
+        this.triageDate = triageDate;
+    }
+
+    @Override
     public String toString() {
-        return "PatientTriage(id=" + this.getId() + ", patientWeight=" + this.getPatientWeight() + ", patientTemperature=" + this.getPatientTemperature() + ", patinetHeight=" + this.getPatinetHeight() + ", patientBloodPressure=" + this.getPatientBloodPressure() + ", staffName=" + this.getStaffName() + ", patient=" + this.getPatient() + ")";
+        return "PatientTriage{" +
+                "id=" + id +
+                ", patientWeight=" + patientWeight +
+                ", patientTemperature=" + patientTemperature +
+                ", patinetHeight=" + patinetHeight +
+                ", patientBloodPressure='" + patientBloodPressure + '\'' +
+                ", staffName='" + staffName + '\'' +
+                ", triageDate=" + triageDate +
+                ", patient=" + patient +
+                '}';
     }
 }
