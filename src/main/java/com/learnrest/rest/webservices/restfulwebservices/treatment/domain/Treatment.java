@@ -31,6 +31,9 @@ public class Treatment implements Serializable {
     @Column(name = "date_of_diagnosis")
     private Date dateOfDiagnosis;
 
+    @Column(name = "drug_prescription", columnDefinition = "TEXT")
+    private String drugPrescription;
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private Patient patient;
 
@@ -85,6 +88,14 @@ public class Treatment implements Serializable {
         this.patient = patient;
     }
 
+    public String getDrugPrescription() {
+        return drugPrescription;
+    }
+
+    public void setDrugPrescription(String drugPrescription) {
+        this.drugPrescription = drugPrescription;
+    }
+
     @Override
     public String toString() {
         return "Treatment{" +
@@ -93,6 +104,7 @@ public class Treatment implements Serializable {
                 ", caseNotes='" + caseNotes + '\'' +
                 ", staffName='" + staffName + '\'' +
                 ", dateOfDiagnosis=" + dateOfDiagnosis +
+                ", drugPrescription='" + drugPrescription + '\'' +
                 ", patient=" + patient +
                 '}';
     }

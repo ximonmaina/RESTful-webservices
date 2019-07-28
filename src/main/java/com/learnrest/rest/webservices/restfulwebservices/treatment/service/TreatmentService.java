@@ -26,6 +26,7 @@ public class TreatmentService {
         treatment.setCaseNotes(treatmentData.getCaseNotes());
         treatment.setStaffName(treatmentData.getStaffName());
         treatment.setDateOfDiagnosis(treatmentData.getDateOfDiagnosis());
+        treatment.setDrugPrescription(treatmentData.getDrugPrescription());
         treatment.setPatient(patient);
 
         return this.treatmentRepository.save(treatment);

@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 import com.learnrest.rest.webservices.restfulwebservices.laboratory.domain.Laboratory;
 import com.learnrest.rest.webservices.restfulwebservices.patient.domain.Patient;
 import com.learnrest.rest.webservices.restfulwebservices.patienttriage.domain.PatientTriage;
-import com.learnrest.rest.webservices.restfulwebservices.pharmacy.domain.Pharmacy;
+//import com.learnrest.rest.webservices.restfulwebservices.pharmacy.domain.Pharmacy;
 import com.learnrest.rest.webservices.restfulwebservices.treatment.domain.Treatment;
 
 import java.io.IOException;
@@ -59,6 +59,7 @@ public class PatientSerializer extends StdSerializer<Patient> {
             jsonGenerator.writeStringField("caseNotes", treatment.getCaseNotes());
             jsonGenerator.writeStringField("nameOfDoctor", treatment.getStaffName());
             jsonGenerator.writeObjectField("dateOfDiagnosis", treatment.getDateOfDiagnosis());
+            jsonGenerator.writeStringField("drugPrescription", treatment.getDrugPrescription());
             jsonGenerator.writeEndObject();
         }
         jsonGenerator.writeEndArray();
@@ -74,17 +75,17 @@ public class PatientSerializer extends StdSerializer<Patient> {
             jsonGenerator.writeEndObject();
         }
         jsonGenerator.writeEndArray();
-        jsonGenerator.writeArrayFieldStart("PharmacyData");
-        for (Pharmacy pharmacy : patient.getPharmacies()) {
-            jsonGenerator.writeStartObject();
-            jsonGenerator.writeNumberField("id", pharmacy.getId());
-            jsonGenerator.writeStringField("drugPrescription", pharmacy.getDrugPrescription());
-            jsonGenerator.writeObjectField("drugPrescriptionDate", pharmacy.getDrugPrescriptionDate());
-            jsonGenerator.writeStringField("nameOfDoctor", pharmacy.getNameOfDoctor());
-            jsonGenerator.writeStringField("staffName", pharmacy.getStaffName());
-            jsonGenerator.writeEndObject();
-        }
-        jsonGenerator.writeEndArray();
+//        jsonGenerator.writeArrayFieldStart("PharmacyData");
+//        for (Pharmacy pharmacy : patient.getPharmacies()) {
+//            jsonGenerator.writeStartObject();
+//            jsonGenerator.writeNumberField("id", pharmacy.getId());
+//            jsonGenerator.writeStringField("drugPrescription", pharmacy.getDrugPrescription());
+//            jsonGenerator.writeObjectField("drugPrescriptionDate", pharmacy.getDrugPrescriptionDate());
+//            jsonGenerator.writeStringField("nameOfDoctor", pharmacy.getNameOfDoctor());
+//            jsonGenerator.writeStringField("staffName", pharmacy.getStaffName());
+//            jsonGenerator.writeEndObject();
+//        }
+//        jsonGenerator.writeEndArray();
         jsonGenerator.writeEndObject();
     }
 }

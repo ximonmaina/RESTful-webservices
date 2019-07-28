@@ -22,6 +22,7 @@ public class TreatmentSerializer extends StdSerializer<Treatment> {
         jsonGenerator.writeStringField("caseNotes", treatment.getCaseNotes());
         jsonGenerator.writeStringField("staffName", treatment.getStaffName());
         jsonGenerator.writeObjectField("dateOfDiagnosis", treatment.getDateOfDiagnosis());
+        jsonGenerator.writeStringField("drugPrescription", treatment.getDrugPrescription());
         jsonGenerator.writeArrayFieldStart("patient");
         jsonGenerator.writeStartObject();
         jsonGenerator.writeNumberField("id", treatment.getPatient().getId());

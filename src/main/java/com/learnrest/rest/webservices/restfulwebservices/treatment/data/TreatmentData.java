@@ -12,15 +12,17 @@ public class TreatmentData {
     private String caseNotes;
     private String staffName;
     private Date dateOfDiagnosis;
+    private String drugPrescription;
     private long patient;
 
-    public TreatmentData(long id, String disease, String caseNotes,
-                          String staffName, Date dateOfDiagnosis, long patient) {
+    public TreatmentData(long id, String disease, String caseNotes, String staffName,
+                         Date dateOfDiagnosis, String drugPrescription, long patient) {
         this.id = id;
         this.disease = disease;
         this.caseNotes = caseNotes;
         this.staffName = staffName;
         this.dateOfDiagnosis = dateOfDiagnosis;
+        this.drugPrescription = drugPrescription;
         this.patient = patient;
     }
 
