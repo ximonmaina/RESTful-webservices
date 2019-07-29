@@ -2,11 +2,14 @@ package com.learnrest.rest.webservices.restfulwebservices.treatment.domain;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.learnrest.rest.webservices.restfulwebservices.jsonserializers.TreatmentSerializer;
+import com.learnrest.rest.webservices.restfulwebservices.laboratory.domain.Laboratory;
 import com.learnrest.rest.webservices.restfulwebservices.patient.domain.Patient;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @JsonSerialize(using = TreatmentSerializer.class)
 @Entity
@@ -36,6 +39,14 @@ public class Treatment implements Serializable {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private Patient patient;
+
+    @ManyToMany(fetch = FetchType.LAZY,
+                cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "treatment_laboratory",
+    joinColumns = {@JoinColumn(name="treatment_id",referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "laboratory_id", referencedColumnName = "id")}
+    )
+    private Set<Laboratory> laboratories = new HashSet<>();
 
     public Treatment() {
     }
@@ -94,6 +105,14 @@ public class Treatment implements Serializable {
 
     public void setDrugPrescription(String drugPrescription) {
         this.drugPrescription = drugPrescription;
+    }
+
+    public Set<Laboratory> getLaboratories() {
+        return laboratories;
+    }
+
+    public void setLaboratories(Set<Laboratory> laboratories) {
+        this.laboratories = laboratories;
     }
 
     @Override
