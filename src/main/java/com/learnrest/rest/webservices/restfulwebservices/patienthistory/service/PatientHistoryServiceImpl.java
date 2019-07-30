@@ -24,7 +24,7 @@ public class PatientHistoryServiceImpl {
 
     public Collection<PatientHistory> retrievePatientHistory(Long patientId) {
         final PatientHistoryMapper patientHistoryMapper = new PatientHistoryMapper();
-        final String sql = "select DISTINCT " + patientHistoryMapper.schema() + "  WHERE  laboratory.test_result_date AND treatment.date_of_diagnosis=patient_triage.triage_date  AND patient.id = ?";
+        final String sql = "select DISTINCT " + patientHistoryMapper.schema() + "  WHERE  laboratory.test_result_date AND treatment.date_of_diagnosis=patient_triage.triage_date  AND patient.id = ? ORDER BY patient_triage.triage_date DESC";
         return this.jdbcTemplate.query(sql, patientHistoryMapper, new Object[] {patientId});
     }
 
