@@ -15,3 +15,6 @@ CREATE TABLE IF NOT EXISTS drug_inventory (
 
 insert into drug_inventory (br_id, drug_name, unit_price, selling_price, inventory, expiry_date, manufacturer, notes)
 values (13223432,'piltons', 5, 9, 500, '2025-09-12', 'Johnson johnson', 'optimum stock');
+
+insert into drug_inventory (br_id, drug_name, unit_price, selling_price, inventory, expiry_date, manufacturer, notes) VALUES
+(33231213, 'paracetamol', 10, 15, 1000, '2030-07-10', 'Glaxosmith', 'on demand');

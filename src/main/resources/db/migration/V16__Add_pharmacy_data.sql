@@ -1,1 +1,0 @@
-INSERT INTO pharmacy (drug_name, drug_dosage, drug_notes, drug_expiry_date, staff_name,  patient_id, name_of_doctor) VALUES ('Cough Syrup', '1 X 3', ' Taken After meals', '2019-07-14','Kariuki', 2, 'Greendelta');

@@ -7,4 +7,4 @@ CREATE TABLE IF NOT EXISTS treatment_patients(
     FOREIGN KEY (patient_id) REFERENCES patient(id)
 );
 
-INSERT INTO treatment_patients ( status, patient_id) VALUES (false, 1);
+# INSERT INTO treatment_patients ( status, patient_id) VALUES (false, 1);
