@@ -1,6 +1,9 @@
-package com.learnrest.rest.webservices.restfulwebservices.patient.api;
+package com.learnrest.rest.webservices.restfulwebservices.laboratory.api;
 
+import com.learnrest.rest.webservices.restfulwebservices.laboratory.data.LaboratoryData;
+import com.learnrest.rest.webservices.restfulwebservices.laboratory.domain.Laboratory;
 import com.learnrest.rest.webservices.restfulwebservices.patient.domain.Patient;
+import com.learnrest.rest.webservices.restfulwebservices.patient.repository.PatientRepository;
 import com.learnrest.rest.webservices.restfulwebservices.tokenstringconstants.TokenString;
 import org.junit.Assert;
 import org.junit.Test;
@@ -18,82 +21,69 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Date;
 
-
+import static org.junit.jupiter.api.Assertions.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class PatientControllerTest {
+public class LaboratoryControllerTest {
 
+    @Autowired
+    private TestRestTemplate restTemplate;
 
-  @Autowired
-  private TestRestTemplate restTemplate;
-
-  @LocalServerPort
-  int randomServerPort;
-
+    @LocalServerPort
+    int randomServerPort;
 
     @Test
-   public void whenValidUrlAndMethodAndContentType_thenReturns200() throws Exception {
+    public void whenValidUrlAndContentType_thenResturns200() throws URISyntaxException {
+        LaboratoryData laboratory = new LaboratoryData(0, "Typhoid test name",
+                "Negative for typhoid test", new Date(), "kariuki", "Maina", 1);
 
-        Patient patient = new Patient("Sylvia", "Wangari","Wanjeri", 12345678, new Date(),  22, "Male","Kenya","Kiambu", 623413423, "776-00290", "maina@gmail.com", new Date(), "SLYWANGWANJ006");
 
-        final String baseUrl = "http://localhost:"+randomServerPort+"/patient/addpatient";
+        final String baseUrl = "http://localhost:"+randomServerPort+"/laboratory/addLabData";
         URI uri = new URI(baseUrl);
+
         HttpHeaders headers = new HttpHeaders();
         headers.set("Authorization", TokenString.TOKEN_STRING.getTokenString());
-        HttpEntity<Patient> request = new HttpEntity<>(patient, headers);
-        ResponseEntity<String> result = this.restTemplate.postForEntity(uri, request, String.class);
+        HttpEntity<LaboratoryData> request = new HttpEntity<>(laboratory, headers);
+        ResponseEntity<String> responseEntity = this.restTemplate.postForEntity(uri, request, String.class);
 
-        Assert.assertEquals(201, result.getStatusCodeValue());
-
+        Assert.assertEquals(201, responseEntity.getStatusCodeValue());
     }
 
-
     @Test
-   public void whenValidInput_thenReturnsUserResource() throws Exception {
-        Patient patient = new Patient("Sylvia", "Wangari","Wanjeri", 12345678, new Date(),
-                22, "Male","Kenya","Kiambu", 623413423, "776-00290",
-                "maina@gmail.com", new Date(), "SLYWANGWANJ006");
-
-        final String baseUrl = "http://localhost:"+randomServerPort+"/patient/getpatient/1";
+    public void whenValidInput_thenReturnResource() throws URISyntaxException {
+        final String baseUrl = "http://localhost:"+randomServerPort+"/laboratory/getLabData/1";
         URI uri = new URI(baseUrl);
 
         HttpHeaders headers = new HttpHeaders();
         headers.set("Authorization", TokenString.TOKEN_STRING.getTokenString());
-
-        HttpEntity<Patient> requestEntity = new HttpEntity<>(null, headers);
-
-        ResponseEntity<String> result = restTemplate.exchange(uri, HttpMethod.GET, requestEntity, String.class);
+        HttpEntity<Laboratory> request = new HttpEntity<>(null, headers);
+        ResponseEntity<String> result = restTemplate.exchange(uri, HttpMethod.GET, request, String.class);
 
         Assert.assertEquals(200, result.getStatusCodeValue());
-        Assert.assertEquals(true, result.getBody().contains("patientFirstName"));
-
-
+        Assert.assertEquals(true, result.getBody().contains("testName"));
 
     }
 
     @Test
-   public void whenNullValue_thenReturns400AndErrorResult() throws Exception {
+    public void whenNullHeaderValue_thenReturns400AndErrorResult() throws URISyntaxException {
         RestTemplate restTemplate = new RestTemplate();
-        final String baseUrl = "http://localhost:"+randomServerPort+"/patient/getpatient/1";
+        final String baseUrl = "http://localhost:"+randomServerPort+"/laboratory/getLabData/1";
         URI uri = new URI(baseUrl);
 
         HttpHeaders headers = new HttpHeaders();
-
-        HttpEntity<Patient> requestEntity = new HttpEntity<>(null, headers);
+        HttpEntity<Laboratory> requestEntity = new HttpEntity<>(null, headers);
 
         try {
             restTemplate.exchange(uri, HttpMethod.GET, requestEntity, String.class);
             Assert.fail();
         } catch (HttpClientErrorException ex) {
-            // Verify bad request and missing header
             Assert.assertEquals(401, ex.getRawStatusCode());
             Assert.assertEquals(false, ex.getResponseBodyAsString().contains("Missing request header"));
         }
-
-
     }
 
 }
