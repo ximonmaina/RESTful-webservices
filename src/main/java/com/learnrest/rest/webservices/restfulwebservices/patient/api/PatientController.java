@@ -50,7 +50,7 @@ public class PatientController {
     public ResponseEntity<Void> createPatient(@RequestBody Patient patient) {
         if (patient != null) {
             patient.setPatientJoinDate(new Date());
-            Patient createdPatient =  this.patientRepository.save(patient);
+            Patient createdPatient =  this.patientService.savePatient(patient);
             URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                     .buildAndExpand(createdPatient.getId()).toUri();
             return ResponseEntity.created(uri).build();

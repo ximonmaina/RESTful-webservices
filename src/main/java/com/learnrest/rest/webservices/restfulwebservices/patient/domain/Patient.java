@@ -8,7 +8,6 @@ import com.learnrest.rest.webservices.restfulwebservices.jsonserializers.Patient
 import com.learnrest.rest.webservices.restfulwebservices.laboratory.domain.Laboratory;
 import com.learnrest.rest.webservices.restfulwebservices.patienttriage.domain.PatientTriage;
 import com.learnrest.rest.webservices.restfulwebservices.treatment.domain.Treatment;
-import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -68,6 +67,9 @@ public class Patient  implements Serializable {
     @Column(name = "p_join_date")
     private Date patientJoinDate;
 
+    @Column(name = "p_clinic_id", columnDefinition = "TEXT")
+    private String patientClinicId;
+
     @OneToMany
     @JoinColumn(name = "patient_id")
 //    @JsonBackReference
@@ -113,6 +115,24 @@ public class Patient  implements Serializable {
     public Patient() {
     }
 
+    public Patient(String patientFirstName, String patientLastName, String patientMiddleName, long patientIdentityNumber,
+                   Date patientDateOfBirth, int patientAge, String patientGender, String patientCountry, String patientCounty,
+                   long patientPhoneNumber, String patientAddress, String patientEmailAddress, Date patientJoinDate, String patientClinicId) {
+        this.patientFirstName = patientFirstName;
+        this.patientLastName = patientLastName;
+        this.patientMiddleName = patientMiddleName;
+        this.patientIdentityNumber = patientIdentityNumber;
+        this.patientDateOfBirth = patientDateOfBirth;
+        this.patientAge = patientAge;
+        this.patientGender = patientGender;
+        this.patientCountry = patientCountry;
+        this.patientCounty = patientCounty;
+        this.patientPhoneNumber = patientPhoneNumber;
+        this.patientAddress = patientAddress;
+        this.patientEmailAddress = patientEmailAddress;
+        this.patientJoinDate = patientJoinDate;
+        this.patientClinicId = patientClinicId;
+    }
 
     public long getId() {
         return this.id;
@@ -170,6 +190,13 @@ public class Patient  implements Serializable {
         return this.patientJoinDate;
     }
 
+    public String getPatientClinicId() {
+        return patientClinicId;
+    }
+
+    public void setPatientClinicId(String patientClinicId) {
+        this.patientClinicId = patientClinicId;
+    }
 
     public Set<PatientTriage> getPatientTriages() {
         return this.patientTriages;
@@ -252,9 +279,12 @@ public class Patient  implements Serializable {
                 ", patientAddress='" + patientAddress + '\'' +
                 ", patientEmailAddress='" + patientEmailAddress + '\'' +
                 ", patientJoinDate=" + patientJoinDate +
+                ", patientClinicId='" + patientClinicId + '\'' +
                 ", patientTriages=" + patientTriages +
                 ", treatments=" + treatments +
                 ", laboratories=" + laboratories +
                 '}';
     }
+
+
 }

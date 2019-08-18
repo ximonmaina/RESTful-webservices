@@ -37,6 +37,7 @@ public class LaboratorySerializer extends StdSerializer<Laboratory> {
         jsonGenerator.writeStringField("patientCounty", laboratory.getPatient().getPatientCounty());
         jsonGenerator.writeNumberField("patientPhoneNumber", laboratory.getPatient().getPatientPhoneNumber());
         jsonGenerator.writeStringField("patientEmailAddress",laboratory.getPatient().getPatientEmailAddress());
+        jsonGenerator.writeStringField("patientClinicId", laboratory.getPatient().getPatientClinicId());
         jsonGenerator.writeEndObject();
         jsonGenerator.writeEndArray();
         jsonGenerator.writeEndObject();

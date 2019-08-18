@@ -38,6 +38,7 @@ public class PatientSerializer extends StdSerializer<Patient> {
         jsonGenerator.writeNumberField("patientPhoneNumber", patient.getPatientPhoneNumber());
         jsonGenerator.writeStringField("patientAddress", patient.getPatientAddress());
         jsonGenerator.writeStringField("patientEmailAddress",patient.getPatientEmailAddress());
+        jsonGenerator.writeStringField("patientClinicId", patient.getPatientClinicId());
         jsonGenerator.writeArrayFieldStart("PatientTriage");
         for (PatientTriage patientTriage: patient.getPatientTriages() ) {
             jsonGenerator.writeStartObject();
